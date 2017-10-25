@@ -33,3 +33,18 @@ print 'Document name: ' + details.json()['name']
 # Import Dataset
 input_file_path = "data/demo_rand_array.csv"
 details = c.upload_blob(did, wid, filepath=input_file_path)
+
+
+"""
+# Delete Document
+c.del_document(did)
+
+# tCheck for Trashed Document
+trashed_doc = c.get_document(did)
+
+if trashed_doc.json()['trash'] is True:
+    print 'Document now in trash'
+else:
+    print 'Error: Document not trashed'
+
+"""

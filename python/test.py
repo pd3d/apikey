@@ -32,8 +32,11 @@ print 'Document name: ' + details.json()['name']
 
 # Import Dataset
 input_file_path = "data/demo_rand_array.csv"
-details = c.upload_blob(did, wid, filepath=input_file_path)
+input_file = c.upload_blob(did, wid, filepath=input_file_path)
+eid = details.json()['id']
+print(eid)
 
+details = c.evaluate_featurescript(did, wid, eid, script_name='import_data')
 
 """
 # Delete Document

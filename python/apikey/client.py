@@ -1,9 +1,12 @@
-'''
+"""
 client
-======
 
-Convenience functions for working with the Onshape API
-'''
+Modified version of the default apikey.client
+
+Fluvio L Lobo Fenoglietto
+Sam Drucker
+10/25/2017
+"""
 
 from onshape import Onshape
 
@@ -214,3 +217,18 @@ class Client():
             'Accept': 'application/vnd.onshape.v1+octet-stream'
         }
         return self._api.request('get', '/api/partstudios/d/' + did + '/w/' + wid + '/e/' + eid + '/stl', headers=req_headers)
+
+    # Evaluate FeatureScript
+    #
+    # The following function evaluates or executes a specific FeatureScript within the context of a part studio
+    def evaluate_featurescript(self, did, wvm, eid, script_name='0'):
+
+        req_headers = {
+            'Content-Type': 'application/json'
+        }
+
+        payload = {
+            'script': script_name
+        }
+        
+        return self._api.request('get', '/api/partstudios/d/' + did + '/[wvm]/' + wvm + '/e/' + eid + '/featurescript', headers=req_headers, body=payload)

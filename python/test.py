@@ -32,4 +32,4 @@ print 'Document name: ' + details.json()['name']
 
 # Import Dataset
 input_file_path = "data/demo_rand_array.csv"
-c.upload_blob(did, wid, filepath=input_file_path)
+details = c.upload_blob(did, wid, filepath=input_file_path)
